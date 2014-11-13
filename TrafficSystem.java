@@ -2,48 +2,34 @@ package TS;
 import java.util.Scanner;
 import java.util.Random;
 public class TrafficSystem {
-    // Definierar de vaegar och signaler som ingaar i det 
-    // system som skall studeras.
-    // Samlar statistik
-    
-    // Attribut som beskriver bestaandsdelarna i systemet
+
     private Lane  r0;
     private Lane  r1;
     private Lane  r2;
     private Light s1;
     private Light s2;
+    
     Scanner ob = new Scanner(System.in);
     int chance; 
     Random rand = new Random();
+    
     private int left = 0;
     private int forward = 0;
     private int carsin = 0;
     private int carsout = 0;
     private int total = 0;
-    private int maxtime = 0;
-    // Diverse attribut foor simuleringsparametrar (ankomstintensiteter,
-    // destinationer...)
-
-    // Diverse attribut foor statistiksamling
-    
+    private int maxtime = 0;    
     private int time = 0;
+    
     /** Prints out the choices for the user and takes in the users input on the right traffic components
      */
-    public TrafficSystem() {
-	System.out.println("The length of in-lane:");
-	this.r0 = new Lane(ob.nextInt());
-	System.out.println("The length of the turn-lane and the forward-lane:");
-	int temp = ob.nextInt();
-	this.r1 = new Lane(temp);
-	this.r2 = new Lane(temp);
-	System.out.println("The period of the forward light:");
-	temp = ob.nextInt();
-	this.s1 = new Light(temp, (temp/2));
-	System.out.println("The period of the turning light:");
-	temp = ob.nextInt();	
-	this.s2 = new Light(temp, (temp/2));
-	System.out.println("The chance of a car arriving:");
-	this.chance = ob.nextInt();
+    public TrafficSystem(int r0, int r12, int flight, int tlight, int ccar) {
+	this.r0 = new Lane(r0);
+	this.r1 = new Lane(r12); 
+	this.r2 = new Lane(r12);
+	this.s1 = new Light(flight, (flight/2));	
+	this.s2 = new Light(tlight, (tlight/2));
+	this.chance = ccar;
     }
 
     /** steps the car forward in the array(road) aswell as the lights and the time. It also makes new cars to put in on the array(road) and takes out the old ones at the light. It does everything.
@@ -93,43 +79,57 @@ public class TrafficSystem {
 	s1.step();
 	s2.step();
 	this.time ++;
-
-	// Stega systemet ett tidssteg m h a komponenternas step-metoder
-	// Skapa bilar, laegg in och ta ur paa de olika Lane-kompenenterna
     }
 
-	//   public void printStatistics() {
-	// Skriv statistiken samlad saa haer laangt
-	//    }
     /**Prints out the simulation of the traffic system which includes lights and road
      */
     public void print() {
 	System.out.println("" +s1.toString()+"\t" +r1.toString()+ "" +r0.toString()+ "\n" +s2.toString()+ "\t" +r2.toString()+"/\n\n");
-	// Skriv ut en grafisk representation av koosituationen
-	// med hjaelp av klassernas toString-metoder
     }
-
+    
+/** Counts how many cars that drive into the roads.
+ * @return The number of cars that drove into the system.
+ */
     public int getcarsin(){
 	return this.carsin;
     }
 
+    /** Counts how many cars that drive out from the roads.
+     * @return The number of cars that drove out of the system.
+     */
     public int getcarsout(){
 	return this.carsout;
     }
-
+    
+ /** Count how many cars that turn left.
+  * @return The number of cars that turned left in the system.
+  */
     public int getleft(){
 	return this.left;
     }
 
+    /**count how many cars that drive forward.
+     * @return The number of cars that drove forward.
+     */
     public int getforward(){
 	return this.forward;
     }
     
+    /** calculates the average time it takes a car to go thru the system.
+     * @return The average time i took a car to drive thru the system.
+     */
     public int getTotal(){
-    	this.total = (this.total / this.carsout);
-    	return this.total;
+    	if (this.carsout == 0)
+    		return 0;
+	    else{
+	    	this.total = (this.total / this.carsout);
+	    	return this.total;
+	    	}
     }
     
+    /** calculates the maximum time it takes a car to go thru the system.
+     * @return The maximum time it took a car to go thru the system.
+     */
     public int getMax(){
     	return this.maxtime;
     }
@@ -138,7 +138,8 @@ public class TrafficSystem {
      */
 
     public void printstat(){
-	System.out.print("Number of cars in:" +getcarsin()+ "\nNumber of cars going left:" +getleft()+ "\nNumber of cars driving forward:" +getforward()+ "\nNumber of cars out:" +getcarsout()+ "\n The average time it took for a car to go thru the system:" +getTotal()+ "\n The maximum time it took for a car to go thru the system:" +getMax());
+	System.out.println("Number of cars in: " +getcarsin()+ "\nNumber of cars going left: " +getleft()); 
+	System.out.println("Number of cars driving forward: " +getforward()+ "\nNumber of cars out: " +getcarsout()+ "\nThe average time it took for a car to go thru the system: " +getTotal()+ " loops \nThe maximum time it took for a car to go thru the system: " +getMax()+ " loops \n");
     }
 
 }

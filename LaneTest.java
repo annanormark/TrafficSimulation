@@ -12,7 +12,6 @@ public class LaneTest {
 		Car testcar = new Car(2, 2);
 		testlane.putLast(testcar);
 		assertTrue(testlane.lastFree() == false);
-		fail("Not yet implemented");
 	}
 	
 	@Test
@@ -22,7 +21,6 @@ public class LaneTest {
 		testlane.putLast(testcar1);
 		testlane.step();
 		assertTrue(testlane.getFirst() == testcar1);
-		fail("Nope");
 	}
 	
 	@Test
@@ -33,7 +31,6 @@ public class LaneTest {
 		testlane.step();
 		testlane.getFirst();
 		assertTrue(testlane.firstCar() == null);
-		fail("noooooo");
 	}
 
 }

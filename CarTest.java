@@ -10,7 +10,6 @@ public class CarTest {
 	public void test1() {
 		Car test = new Car(1, 1); 
 		assertTrue(test.getBornTime() == 1);
-		fail("Not yet implemented");
 	}
 	
 	@Test

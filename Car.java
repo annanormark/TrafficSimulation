@@ -1,9 +1,10 @@
+package TS;
+
 import java.util.Random;
 public class Car {
 
     private int bornTime;
     private int dest; // 1 för rakt fram, 2 för vaenstersvaeng
-    Random ran = new Random();
 
     /** sets the start time and destination of the car by randomizing the path. 1 for straight ahead, 2 for turning left
      */
