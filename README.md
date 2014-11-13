@@ -11,9 +11,4 @@ För att bygga och köra programmet från terminalen måste du för det första 
 
 När detta skrivits in kommer simuleringen att starta och använda de angivna talen för att sedan avsluta allt med statistik av simuleringen.
 
-TESTCASES
-
-
-Eventuella utökningar skulle vara att kanske få det mer grafiskt för att kunna se allt bättre samt att utveckla trafiksystemet yttligare och göra det lite mer verklighetstroget.
-
-GJORDA MÅL
+Eventuella utökningar skulle vara att kanske få det mer grafiskt för att kunna se allt bättre samt att utveckla trafiksystemet yttligare och göra det lite mer verklighetstrogen.
