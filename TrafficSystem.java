@@ -21,7 +21,7 @@ public class TrafficSystem {
     private int maxtime = 0;    
     private int time = 0;
     
-    /** Prints out the choices for the user and takes in the users input on the right traffic components
+    /** Makes a trafficsystem with the seleceted inputs for the lanes, lights and the chance of a car arriving.
      */
     public TrafficSystem(int r0, int r12, int flight, int tlight, int ccar) {
 	this.r0 = new Lane(r0);

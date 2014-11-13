@@ -3,11 +3,11 @@ import java.util.*;
 public class Simulation {
 
     /**
-       Make the trafficsystem and simulation.
+       Makes the trafficsystem and simulation, and lets the user write the input to the system.
      */
     public static void main(String [] args) {
 	Scanner ob = new Scanner(System.in);
-	
+	System.out.println("All input values must be in numbers (integers)");
 	System.out.println("Length of simulation");
 	int n = ob.nextInt();
 	
