@@ -5,6 +5,9 @@ JC = javac
 
 .java.class:
 	$(JC) $*.java
+	
+all: $(CLASSES)
+	$(JC) $(JFLAGS) $(CLASSES)
 
 CLASSES = \
 	Car.java \
@@ -20,8 +23,6 @@ classes: $(CLASSES:.java=.class)
 clean:
 	$(RM) *.class
 
-test: 
-	javac -cp /usr/share/java/junit4.jar CarTest.java Car.java LaneTest.java Lane.java LightTest.java Light.java TrafficSystemTest.java TrafficSystem.java JunitTestSuite.java
 
-testrun:
-	java -cp /usr/share/java/junit4.jar:. org.junit.runner.JUnitCore JunitTestSuite
+test:  AllTests.class
+	java junit.textui.TestRunner AllTests 
